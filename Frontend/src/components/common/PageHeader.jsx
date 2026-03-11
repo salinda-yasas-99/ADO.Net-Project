@@ -1,13 +1,3 @@
-/**
- * PageHeader component
- * Consistent header for pages with title and action button
- * 
- * @param {Object} props
- * @param {string} props.title - Page title
- * @param {string} props.subtitle - Optional subtitle
- * @param {string} props.actionLabel - Action button label
- * @param {function} props.onAction - Action button handler
- */
 function PageHeader({ title, subtitle, actionLabel, onAction }) {
   return (
     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">

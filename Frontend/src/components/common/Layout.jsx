@@ -1,10 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import Navigation from './Navigation';
 
-/**
- * Layout component
- * Wraps all pages with consistent navigation and structure
- */
 function Layout() {
   return (
     <div className="min-h-screen bg-gray-50">

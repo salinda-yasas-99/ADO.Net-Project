@@ -1,14 +1,3 @@
-/**
- * Modal component
- * Displays content in a centered overlay dialog
- * 
- * @param {Object} props
- * @param {boolean} props.isOpen - Whether modal is visible
- * @param {function} props.onClose - Handler for closing modal
- * @param {string} props.title - Modal title
- * @param {React.ReactNode} props.children - Modal content
- * @param {string} props.size - Modal size: 'sm' | 'md' | 'lg' | 'xl'
- */
 function Modal({ isOpen, onClose, title, children, size = 'md' }) {
   if (!isOpen) return null;
 
@@ -21,20 +10,17 @@ function Modal({ isOpen, onClose, title, children, size = 'md' }) {
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto">
-      {/* Backdrop */}
       <div
         className="fixed inset-0 bg-black/50 transition-opacity"
         onClick={onClose}
         aria-hidden="true"
       />
       
-      {/* Modal container */}
       <div className="flex min-h-full items-center justify-center p-4">
         <div
           className={`relative w-full ${sizeClasses[size]} bg-white rounded-xl shadow-xl transform transition-all`}
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Header */}
           <div className="flex items-center justify-between p-4 border-b">
             <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
             <button
@@ -48,7 +34,6 @@ function Modal({ isOpen, onClose, title, children, size = 'md' }) {
             </button>
           </div>
           
-          {/* Content */}
           <div className="p-4">
             {children}
           </div>

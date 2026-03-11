@@ -1,16 +1,6 @@
 import { useState, useEffect } from 'react';
 import { FormInput, Button, Alert } from '../common';
 
-/**
- * DepartmentForm component
- * Form for creating and editing departments
- * 
- * @param {Object} props
- * @param {Object} props.department - Department data for editing (null for create)
- * @param {function} props.onSubmit - Form submit handler
- * @param {function} props.onCancel - Cancel handler
- * @param {boolean} props.isLoading - Whether form is submitting
- */
 function DepartmentForm({ department, onSubmit, onCancel, isLoading = false }) {
   const [formData, setFormData] = useState({
     departmentCode: '',
@@ -21,7 +11,6 @@ function DepartmentForm({ department, onSubmit, onCancel, isLoading = false }) {
 
   const isEditing = Boolean(department);
 
-  // Populate form when editing
   useEffect(() => {
     if (department) {
       setFormData({
@@ -31,18 +20,15 @@ function DepartmentForm({ department, onSubmit, onCancel, isLoading = false }) {
     }
   }, [department]);
 
-  // Validation rules
   const validate = () => {
     const newErrors = {};
 
-    // Department Code validation
     if (!formData.departmentCode.trim()) {
       newErrors.departmentCode = 'Department code is required.';
     } else if (formData.departmentCode.trim().length > 20) {
       newErrors.departmentCode = 'Department code must not exceed 20 characters.';
     }
 
-    // Department Name validation
     if (!formData.departmentName.trim()) {
       newErrors.departmentName = 'Department name is required.';
     } else if (formData.departmentName.trim().length > 100) {
@@ -57,7 +43,6 @@ function DepartmentForm({ department, onSubmit, onCancel, isLoading = false }) {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     
-    // Clear field error on change
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: '' }));
     }

@@ -1,12 +1,3 @@
-/**
- * Alert component
- * Displays success, error, warning, or info messages
- * 
- * @param {Object} props
- * @param {string} props.type - Alert type: 'success' | 'error' | 'warning' | 'info'
- * @param {string} props.message - Alert message
- * @param {function} props.onClose - Optional close handler
- */
 function Alert({ type = 'info', message, onClose }) {
   const typeStyles = {
     success: 'bg-green-50 border-green-500 text-green-700',

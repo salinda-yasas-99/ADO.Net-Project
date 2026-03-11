@@ -7,32 +7,9 @@ import {
   Alert,
   LoadingSpinner,
 } from '../../components/common';
-import { EmployeeForm } from '../../components/employees';
-import employeeService from '../../services/employeeService';
+import { UserForm } from '../../components/users';
+import userService from '../../services/userService';
 
-/**
- * Calculate age from date of birth
- * @param {string} dateOfBirth - Date string
- * @returns {number} Age in years
- */
-const calculateAge = (dateOfBirth) => {
-  if (!dateOfBirth) return 0;
-  const today = new Date();
-  const birthDate = new Date(dateOfBirth);
-  let age = today.getFullYear() - birthDate.getFullYear();
-  const monthDiff = today.getMonth() - birthDate.getMonth();
-  
-  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-    age--;
-  }
-  return age;
-};
-
-/**
- * Format date for display
- * @param {string} dateString - ISO date string
- * @returns {string} Formatted date
- */
 const formatDate = (dateString) => {
   if (!dateString) return '';
   return new Date(dateString).toLocaleDateString('en-US', {
@@ -42,11 +19,6 @@ const formatDate = (dateString) => {
   });
 };
 
-/**
- * Format salary for display
- * @param {number} salary - Salary amount
- * @returns {string} Formatted currency
- */
 const formatSalary = (salary) => {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -54,24 +26,17 @@ const formatSalary = (salary) => {
   }).format(salary);
 };
 
-/**
- * EmployeeList page
- * Displays list of employees with CRUD operations
- */
-function EmployeeList() {
-  // State
-  const [employees, setEmployees] = useState([]);
+function UserList() {
+  const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   
-  // Modal states
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
-  const [selectedEmployee, setSelectedEmployee] = useState(null);
+  const [selectedUser, setSelectedUser] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Table columns configuration
   const columns = [
     { key: 'id', label: 'ID' },
     { 
@@ -88,7 +53,6 @@ function EmployeeList() {
     { 
       key: 'age', 
       label: 'Age',
-      render: (_, row) => calculateAge(row.dateOfBirth),
     },
     { 
       key: 'salary', 
@@ -102,29 +66,27 @@ function EmployeeList() {
     },
   ];
 
-  // Fetch employees
-  const fetchEmployees = useCallback(async () => {
+  const fetchUsers = useCallback(async () => {
     try {
       setIsLoading(true);
       setError('');
-      const response = await employeeService.getAll();
+      const response = await userService.getAll();
       if (response.success) {
-        setEmployees(response.data || []);
+        setUsers(response.data || []);
       } else {
-        setError(response.message || 'Failed to load employees.');
+        setError(response.message || 'Failed to load users.');
       }
     } catch (err) {
-      setError(err.message || 'Failed to load employees.');
+      setError(err.message || 'Failed to load users.');
     } finally {
       setIsLoading(false);
     }
   }, []);
 
   useEffect(() => {
-    fetchEmployees();
-  }, [fetchEmployees]);
+    fetchUsers();
+  }, [fetchUsers]);
 
-  // Clear success message after 5 seconds
   useEffect(() => {
     if (successMessage) {
       const timer = setTimeout(() => setSuccessMessage(''), 5000);
@@ -132,70 +94,67 @@ function EmployeeList() {
     }
   }, [successMessage]);
 
-  // Handlers
   const handleAdd = () => {
-    setSelectedEmployee(null);
+    setSelectedUser(null);
     setIsFormModalOpen(true);
   };
 
-  const handleEdit = (employee) => {
-    setSelectedEmployee(employee);
+  const handleEdit = (user) => {
+    setSelectedUser(user);
     setIsFormModalOpen(true);
   };
 
-  const handleDelete = (employee) => {
-    setSelectedEmployee(employee);
+  const handleDelete = (user) => {
+    setSelectedUser(user);
     setIsDeleteDialogOpen(true);
   };
 
   const handleFormSubmit = async (formData) => {
     setIsSubmitting(true);
     try {
-      if (selectedEmployee) {
-        // Update existing employee
-        const response = await employeeService.update(selectedEmployee.id, formData);
+      if (selectedUser) {
+        const response = await userService.update(selectedUser.id, formData);
         if (response.success) {
-          setSuccessMessage('Employee updated successfully.');
+          setSuccessMessage('User updated successfully.');
           setIsFormModalOpen(false);
-          fetchEmployees();
+          fetchUsers();
         } else {
           throw new Error(response.message);
         }
       } else {
-        // Create new employee
-        const response = await employeeService.create(formData);
+        const response = await userService.create(formData);
         if (response.success) {
-          setSuccessMessage('Employee created successfully.');
+          setSuccessMessage('User created successfully.');
           setIsFormModalOpen(false);
-          fetchEmployees();
+          fetchUsers();
         } else {
           throw new Error(response.message);
         }
       }
     } catch (err) {
-      throw err; // Let the form handle the error
+      throw err;
     } finally {
       setIsSubmitting(false);
     }
   };
 
   const handleConfirmDelete = async () => {
-    if (!selectedEmployee) return;
+    if (!selectedUser) return;
 
     setIsSubmitting(true);
     try {
-      const response = await employeeService.delete(selectedEmployee.id);
+      const response = await userService.delete(selectedUser.id);
       if (response.success) {
-        setSuccessMessage('Employee deleted successfully.');
+        setSuccessMessage('User deleted successfully.');
         setIsDeleteDialogOpen(false);
-        setSelectedEmployee(null);
-        fetchEmployees();
+        setSelectedUser(null);
+        fetchUsers();
       } else {
-        setError(response.message || 'Failed to delete employee.');
+        setError(response.message || 'Failed to delete user.');
         setIsDeleteDialogOpen(false);
       }
     } catch (err) {
-      setError(err.message || 'Failed to delete employee.');
+      setError(err.message || 'Failed to delete user.');
       setIsDeleteDialogOpen(false);
     } finally {
       setIsSubmitting(false);
@@ -204,24 +163,23 @@ function EmployeeList() {
 
   const handleCloseFormModal = () => {
     setIsFormModalOpen(false);
-    setSelectedEmployee(null);
+    setSelectedUser(null);
   };
 
   const handleCloseDeleteDialog = () => {
     setIsDeleteDialogOpen(false);
-    setSelectedEmployee(null);
+    setSelectedUser(null);
   };
 
   return (
     <div>
       <PageHeader
-        title="Employees"
-        subtitle="Manage company employees"
-        actionLabel="Add Employee"
+        title="Users"
+        subtitle="Manage company users"
+        actionLabel="Add User"
         onAction={handleAdd}
       />
 
-      {/* Success Message */}
       {successMessage && (
         <div className="mb-4">
           <Alert
@@ -232,7 +190,6 @@ function EmployeeList() {
         </div>
       )}
 
-      {/* Error Message */}
       {error && (
         <div className="mb-4">
           <Alert
@@ -243,41 +200,38 @@ function EmployeeList() {
         </div>
       )}
 
-      {/* Content */}
       {isLoading ? (
-        <LoadingSpinner message="Loading employees..." />
+        <LoadingSpinner message="Loading users..." />
       ) : (
         <DataTable
           columns={columns}
-          data={employees}
+          data={users}
           onEdit={handleEdit}
           onDelete={handleDelete}
-          emptyMessage="No employees found. Click 'Add Employee' to create one."
+          emptyMessage="No users found. Click 'Add User' to create one."
         />
       )}
 
-      {/* Create/Edit Modal */}
       <Modal
         isOpen={isFormModalOpen}
         onClose={handleCloseFormModal}
-        title={selectedEmployee ? 'Edit Employee' : 'Add Employee'}
+        title={selectedUser ? 'Edit User' : 'Add User'}
         size="lg"
       >
-        <EmployeeForm
-          employee={selectedEmployee}
+        <UserForm
+          user={selectedUser}
           onSubmit={handleFormSubmit}
           onCancel={handleCloseFormModal}
           isLoading={isSubmitting}
         />
       </Modal>
 
-      {/* Delete Confirmation Dialog */}
       <ConfirmDialog
         isOpen={isDeleteDialogOpen}
         onClose={handleCloseDeleteDialog}
         onConfirm={handleConfirmDelete}
-        title="Delete Employee"
-        message={`Are you sure you want to delete "${selectedEmployee?.firstName} ${selectedEmployee?.lastName}"? This action cannot be undone.`}
+        title="Delete User"
+        message={`Are you sure you want to delete "${selectedUser?.firstName} ${selectedUser?.lastName}"? This action cannot be undone.`}
         confirmText="Delete"
         cancelText="Cancel"
         variant="danger"
@@ -287,4 +241,4 @@ function EmployeeList() {
   );
 }
 
-export default EmployeeList;
+export default UserList;

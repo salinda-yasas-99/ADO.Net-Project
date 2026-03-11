@@ -1,17 +1,3 @@
-/**
- * Button component
- * Reusable button with various styles and states
- * 
- * @param {Object} props
- * @param {React.ReactNode} props.children - Button content
- * @param {string} props.type - Button type: 'button' | 'submit' | 'reset'
- * @param {string} props.variant - Button variant: 'primary' | 'secondary' | 'danger' | 'success'
- * @param {string} props.size - Button size: 'sm' | 'md' | 'lg'
- * @param {function} props.onClick - Click handler
- * @param {boolean} props.disabled - Whether button is disabled
- * @param {boolean} props.isLoading - Whether to show loading state
- * @param {string} props.className - Additional CSS classes
- */
 function Button({
   children,
   type = 'button',

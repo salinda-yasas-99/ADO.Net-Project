@@ -1,18 +1,3 @@
-/**
- * FormSelect component
- * Reusable select input with label and error handling
- * 
- * @param {Object} props
- * @param {string} props.label - Select label
- * @param {string} props.name - Select name attribute
- * @param {string|number} props.value - Selected value
- * @param {function} props.onChange - Change handler
- * @param {Array} props.options - Array of {value, label} objects
- * @param {string} props.error - Error message
- * @param {string} props.placeholder - Placeholder option text
- * @param {boolean} props.required - Whether field is required
- * @param {boolean} props.disabled - Whether field is disabled
- */
 function FormSelect({
   label,
   name,

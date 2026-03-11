@@ -1,9 +1,5 @@
 import { NavLink } from 'react-router-dom';
 
-/**
- * Navigation component
- * Provides site-wide navigation with active link highlighting
- */
 function Navigation() {
   const linkClasses = ({ isActive }) =>
     `px-4 py-2 rounded-lg transition-colors duration-200 ${
@@ -25,8 +21,8 @@ function Navigation() {
             <NavLink to="/departments" className={linkClasses}>
               Departments
             </NavLink>
-            <NavLink to="/employees" className={linkClasses}>
-              Employees
+            <NavLink to="/users" className={linkClasses}>
+              Users
             </NavLink>
           </div>
         </div>

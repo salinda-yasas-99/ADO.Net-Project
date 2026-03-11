@@ -1,15 +1,3 @@
-/**
- * DataTable component
- * Reusable table for displaying data with actions
- * 
- * @param {Object} props
- * @param {Array} props.columns - Array of column definitions {key, label, render}
- * @param {Array} props.data - Array of row data objects
- * @param {function} props.onEdit - Edit action handler (receives row data)
- * @param {function} props.onDelete - Delete action handler (receives row data)
- * @param {boolean} props.showActions - Whether to show action buttons
- * @param {string} props.emptyMessage - Message when no data
- */
 function DataTable({
   columns = [],
   data = [],

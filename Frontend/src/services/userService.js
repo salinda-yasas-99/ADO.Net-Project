@@ -1,8 +1,8 @@
 import api from './api';
 
-const ENDPOINT = '/Departments';
+const ENDPOINT = '/Users';
 
-const departmentService = {
+const userService = {
   getAll: async () => {
     const response = await api.get(ENDPOINT);
     const result = response.data;
@@ -17,13 +17,13 @@ const departmentService = {
     return response.data;
   },
 
-  create: async (department) => {
-    const response = await api.post(ENDPOINT, department);
+  create: async (user) => {
+    const response = await api.post(ENDPOINT, user);
     return response.data;
   },
 
-  update: async (id, department) => {
-    const response = await api.put(`${ENDPOINT}/${id}`, department);
+  update: async (id, user) => {
+    const response = await api.put(`${ENDPOINT}/${id}`, user);
     return response.data;
   },
 
@@ -33,4 +33,4 @@ const departmentService = {
   },
 };
 
-export default departmentService;
+export default userService;

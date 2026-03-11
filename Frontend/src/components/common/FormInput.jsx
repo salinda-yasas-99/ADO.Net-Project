@@ -1,19 +1,3 @@
-/**
- * FormInput component
- * Reusable form input with label and error handling
- * 
- * @param {Object} props
- * @param {string} props.label - Input label
- * @param {string} props.name - Input name attribute
- * @param {string} props.type - Input type
- * @param {string} props.value - Input value
- * @param {function} props.onChange - Change handler
- * @param {string} props.error - Error message
- * @param {string} props.placeholder - Placeholder text
- * @param {boolean} props.required - Whether field is required
- * @param {boolean} props.disabled - Whether field is disabled
- * @param {string} props.helpText - Help text below input
- */
 function FormInput({
   label,
   name,

@@ -1,4 +1,3 @@
-// Common Components Export
 export { default as Navigation } from './Navigation';
 export { default as Layout } from './Layout';
 export { default as Alert } from './Alert';

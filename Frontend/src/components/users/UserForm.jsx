@@ -2,46 +2,13 @@ import { useState, useEffect } from 'react';
 import { FormInput, FormSelect, Button, Alert } from '../common';
 import departmentService from '../../services/departmentService';
 
-/**
- * Calculate age from date of birth
- * @param {string} dateOfBirth - Date string in YYYY-MM-DD format
- * @returns {number} Age in years
- */
-const calculateAge = (dateOfBirth) => {
-  if (!dateOfBirth) return 0;
-  const today = new Date();
-  const birthDate = new Date(dateOfBirth);
-  let age = today.getFullYear() - birthDate.getFullYear();
-  const monthDiff = today.getMonth() - birthDate.getMonth();
-  
-  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-    age--;
-  }
-  return age;
-};
-
-/**
- * Format date for input field
- * @param {string} dateString - ISO date string
- * @returns {string} YYYY-MM-DD format
- */
 const formatDateForInput = (dateString) => {
   if (!dateString) return '';
   const date = new Date(dateString);
   return date.toISOString().split('T')[0];
 };
 
-/**
- * EmployeeForm component
- * Form for creating and editing employees
- * 
- * @param {Object} props
- * @param {Object} props.employee - Employee data for editing (null for create)
- * @param {function} props.onSubmit - Form submit handler
- * @param {function} props.onCancel - Cancel handler
- * @param {boolean} props.isLoading - Whether form is submitting
- */
-function EmployeeForm({ employee, onSubmit, onCancel, isLoading = false }) {
+function UserForm({ user, onSubmit, onCancel, isLoading = false }) {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -50,15 +17,13 @@ function EmployeeForm({ employee, onSubmit, onCancel, isLoading = false }) {
     salary: '',
     departmentId: '',
   });
-  const [age, setAge] = useState(0);
   const [errors, setErrors] = useState({});
   const [apiError, setApiError] = useState('');
   const [departments, setDepartments] = useState([]);
   const [loadingDepartments, setLoadingDepartments] = useState(true);
 
-  const isEditing = Boolean(employee);
+  const isEditing = Boolean(user);
 
-  // Load departments for dropdown
   useEffect(() => {
     const fetchDepartments = async () => {
       try {
@@ -75,46 +40,35 @@ function EmployeeForm({ employee, onSubmit, onCancel, isLoading = false }) {
     fetchDepartments();
   }, []);
 
-  // Populate form when editing
   useEffect(() => {
-    if (employee) {
-      const dob = formatDateForInput(employee.dateOfBirth);
+    if (user) {
+      const dob = formatDateForInput(user.dateOfBirth);
       setFormData({
-        firstName: employee.firstName || '',
-        lastName: employee.lastName || '',
-        emailAddress: employee.emailAddress || '',
+        firstName: user.firstName || '',
+        lastName: user.lastName || '',
+        emailAddress: user.emailAddress || '',
         dateOfBirth: dob,
-        salary: employee.salary?.toString() || '',
-        departmentId: employee.departmentId?.toString() || '',
+        salary: user.salary?.toString() || '',
+        departmentId: user.departmentId?.toString() || '',
       });
-      setAge(calculateAge(dob));
     }
-  }, [employee]);
+  }, [user]);
 
-  // Update age when DOB changes
-  useEffect(() => {
-    setAge(calculateAge(formData.dateOfBirth));
-  }, [formData.dateOfBirth]);
-
-  // Validation rules
   const validate = () => {
     const newErrors = {};
 
-    // First Name
     if (!formData.firstName.trim()) {
       newErrors.firstName = 'First name is required.';
     } else if (formData.firstName.trim().length > 50) {
       newErrors.firstName = 'First name must not exceed 50 characters.';
     }
 
-    // Last Name
     if (!formData.lastName.trim()) {
       newErrors.lastName = 'Last name is required.';
     } else if (formData.lastName.trim().length > 50) {
       newErrors.lastName = 'Last name must not exceed 50 characters.';
     }
 
-    // Email Address
     if (!formData.emailAddress.trim()) {
       newErrors.emailAddress = 'Email address is required.';
     } else if (formData.emailAddress.trim().length > 100) {
@@ -126,7 +80,6 @@ function EmployeeForm({ employee, onSubmit, onCancel, isLoading = false }) {
       }
     }
 
-    // Date of Birth
     if (!formData.dateOfBirth) {
       newErrors.dateOfBirth = 'Date of birth is required.';
     } else {
@@ -138,7 +91,6 @@ function EmployeeForm({ employee, onSubmit, onCancel, isLoading = false }) {
       }
     }
 
-    // Salary
     if (!formData.salary) {
       newErrors.salary = 'Salary is required.';
     } else {
@@ -148,7 +100,6 @@ function EmployeeForm({ employee, onSubmit, onCancel, isLoading = false }) {
       }
     }
 
-    // Department
     if (!formData.departmentId) {
       newErrors.departmentId = 'Department is required.';
     }
@@ -161,7 +112,6 @@ function EmployeeForm({ employee, onSubmit, onCancel, isLoading = false }) {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     
-    // Clear field error on change
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: '' }));
     }
@@ -186,18 +136,16 @@ function EmployeeForm({ employee, onSubmit, onCancel, isLoading = false }) {
         departmentId: parseInt(formData.departmentId, 10),
       });
     } catch (error) {
-      setApiError(error.message || 'An error occurred while saving the employee.');
+      setApiError(error.message || 'An error occurred while saving the user.');
     }
   };
 
-  // Get max date (yesterday) for DOB input
   const getMaxDate = () => {
     const today = new Date();
     today.setDate(today.getDate() - 1);
     return today.toISOString().split('T')[0];
   };
 
-  // Department options for select
   const departmentOptions = departments.map((dept) => ({
     value: dept.id,
     label: `${dept.departmentCode} - ${dept.departmentName}`,
@@ -265,7 +213,7 @@ function EmployeeForm({ employee, onSubmit, onCancel, isLoading = false }) {
             Age
           </label>
           <div className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-100 text-gray-600">
-            {formData.dateOfBirth ? `${age} years` : 'Auto-calculated from DOB'}
+            {isEditing ? `${user?.age} years` : 'Calculated after save'}
           </div>
           <p className="mt-1 text-sm text-gray-500">
             Automatically calculated based on date of birth
@@ -315,11 +263,11 @@ function EmployeeForm({ employee, onSubmit, onCancel, isLoading = false }) {
           variant="primary"
           isLoading={isLoading}
         >
-          {isEditing ? 'Update Employee' : 'Create Employee'}
+          {isEditing ? 'Update User' : 'Create User'}
         </Button>
       </div>
     </form>
   );
 }
 
-export default EmployeeForm;
+export default UserForm;

@@ -1,11 +1,3 @@
-/**
- * LoadingSpinner component
- * Displays a centered loading indicator
- * 
- * @param {Object} props
- * @param {string} props.size - Spinner size: 'sm' | 'md' | 'lg'
- * @param {string} props.message - Optional loading message
- */
 function LoadingSpinner({ size = 'md', message }) {
   const sizeClasses = {
     sm: 'h-6 w-6',

@@ -10,31 +10,27 @@ import {
 import { DepartmentForm } from '../../components/departments';
 import departmentService from '../../services/departmentService';
 
-/**
- * DepartmentList page
- * Displays list of departments with CRUD operations
- */
+
 function DepartmentList() {
-  // State
+
   const [departments, setDepartments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   
-  // Modal states
+
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
   const [selectedDepartment, setSelectedDepartment] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Table columns configuration
+
   const columns = [
     { key: 'id', label: 'ID' },
     { key: 'departmentCode', label: 'Code' },
     { key: 'departmentName', label: 'Name' },
   ];
 
-  // Fetch departments
   const fetchDepartments = useCallback(async () => {
     try {
       setIsLoading(true);
@@ -56,7 +52,6 @@ function DepartmentList() {
     fetchDepartments();
   }, [fetchDepartments]);
 
-  // Clear success message after 5 seconds
   useEffect(() => {
     if (successMessage) {
       const timer = setTimeout(() => setSuccessMessage(''), 5000);
@@ -64,7 +59,6 @@ function DepartmentList() {
     }
   }, [successMessage]);
 
-  // Handlers
   const handleAdd = () => {
     setSelectedDepartment(null);
     setIsFormModalOpen(true);
@@ -84,7 +78,6 @@ function DepartmentList() {
     setIsSubmitting(true);
     try {
       if (selectedDepartment) {
-        // Update existing department
         const response = await departmentService.update(selectedDepartment.id, formData);
         if (response.success) {
           setSuccessMessage('Department updated successfully.');
@@ -94,7 +87,6 @@ function DepartmentList() {
           throw new Error(response.message);
         }
       } else {
-        // Create new department
         const response = await departmentService.create(formData);
         if (response.success) {
           setSuccessMessage('Department created successfully.');
@@ -105,7 +97,7 @@ function DepartmentList() {
         }
       }
     } catch (err) {
-      throw err; // Let the form handle the error
+      throw err;
     } finally {
       setIsSubmitting(false);
     }
@@ -153,7 +145,6 @@ function DepartmentList() {
         onAction={handleAdd}
       />
 
-      {/* Success Message */}
       {successMessage && (
         <div className="mb-4">
           <Alert
@@ -164,7 +155,6 @@ function DepartmentList() {
         </div>
       )}
 
-      {/* Error Message */}
       {error && (
         <div className="mb-4">
           <Alert
@@ -175,7 +165,6 @@ function DepartmentList() {
         </div>
       )}
 
-      {/* Content */}
       {isLoading ? (
         <LoadingSpinner message="Loading departments..." />
       ) : (
@@ -188,7 +177,6 @@ function DepartmentList() {
         />
       )}
 
-      {/* Create/Edit Modal */}
       <Modal
         isOpen={isFormModalOpen}
         onClose={handleCloseFormModal}
@@ -203,7 +191,6 @@ function DepartmentList() {
         />
       </Modal>
 
-      {/* Delete Confirmation Dialog */}
       <ConfirmDialog
         isOpen={isDeleteDialogOpen}
         onClose={handleCloseDeleteDialog}
