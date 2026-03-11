@@ -77,10 +77,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B5CEE1AB-68C5-FCEC-EA61-653FFB609ED2}|Backend\\Backend.csproj|c:\\users\\dell\\desktop\\assesment\\backend\\backend\\backend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{B5CEE1AB-68C5-FCEC-EA61-653FFB609ED2}|Backend\\Backend.csproj|solutionrelative:backend\\backend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B5CEE1AB-68C5-FCEC-EA61-653FFB609ED2}|Backend\\Backend.csproj|c:\\users\\dell\\desktop\\assesment\\backend\\backend\\database\\databasescript.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
-      "RelativeMoniker": "D:0:0:{B5CEE1AB-68C5-FCEC-EA61-653FFB609ED2}|Backend\\Backend.csproj|solutionrelative:backend\\database\\databasescript.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
     }
   ],
   "DocumentGroupContainers": [
@@ -106,8 +102,7 @@
               "RelativeToolTip": "Backend\\DTOs\\UpdateDepartmentDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-10T20:15:31.44Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-10T20:15:31.44Z"
             },
             {
               "$type": "Document",
@@ -119,8 +114,7 @@
               "RelativeToolTip": "Backend\\DTOs\\UpdateUserDto.cs",
               "ViewState": "AgIAAAEAAAAAAAAAAADwvx8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-10T20:15:42.738Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-10T20:15:42.738Z"
             },
             {
               "$type": "Document",
@@ -132,8 +126,7 @@
               "RelativeToolTip": "Backend\\Controllers\\DepartmentsController.cs",
               "ViewState": "AgIAAIYAAAAAAAAAAAAgwKkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-10T20:16:33.481Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-10T20:16:33.481Z"
             },
             {
               "$type": "Document",
@@ -145,8 +138,7 @@
               "RelativeToolTip": "Backend\\Controllers\\UsersController.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAUwLsAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-10T20:16:51.218Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-10T20:16:51.218Z"
             },
             {
               "$type": "Document",
@@ -158,8 +150,7 @@
               "RelativeToolTip": "Backend\\Repositories\\UserRepository.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAIgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-10T20:16:17.659Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-10T20:16:17.659Z"
             },
             {
               "$type": "Document",
@@ -169,7 +160,7 @@
               "RelativeDocumentMoniker": "Backend\\Models\\User.cs",
               "ToolTip": "C:\\Users\\DELL\\Desktop\\assesment\\Backend\\Backend\\Models\\User.cs",
               "RelativeToolTip": "Backend\\Models\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAA4wAsAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-10T20:15:22.339Z",
               "EditorCaption": ""
@@ -184,8 +175,7 @@
               "RelativeToolTip": "Backend\\DTOs\\CreateUserDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-10T20:15:37.586Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-10T20:15:37.586Z"
             },
             {
               "$type": "Document",
@@ -197,8 +187,7 @@
               "RelativeToolTip": "Backend\\DTOs\\CreateDepartmentDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-10T20:15:26.493Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-10T20:15:26.493Z"
             },
             {
               "$type": "Document",
@@ -210,8 +199,7 @@
               "RelativeToolTip": "Backend\\DTOs\\ApiResponse.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-10T20:15:47.484Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-10T20:15:47.484Z"
             },
             {
               "$type": "Document",
@@ -223,8 +211,7 @@
               "RelativeToolTip": "Backend\\Repositories\\DepartmentRepository.cs",
               "ViewState": "AgIAAGkAAAAAAAAAAAAmwHoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-10T21:10:44.194Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-10T21:10:44.194Z"
             },
             {
               "$type": "Document",
@@ -236,8 +223,7 @@
               "RelativeToolTip": "Backend\\Models\\Department.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-10T20:15:17.754Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-10T20:15:17.754Z"
             },
             {
               "$type": "Document",
@@ -249,8 +235,7 @@
               "RelativeToolTip": "Backend\\Interfaces\\IUserRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-10T20:15:54.177Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-10T20:15:54.177Z"
             },
             {
               "$type": "Document",
@@ -262,20 +247,18 @@
               "RelativeToolTip": "Backend\\Interfaces\\IDepartmentRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-10T20:15:50.75Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-10T20:15:50.75Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 13,
-              "Title": "DatabaseScript.sql ",
+              "Title": "DatabaseScript.sql",
               "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\assesment\\Backend\\Backend\\Database\\DatabaseScript.sql",
               "RelativeDocumentMoniker": "Backend\\Database\\DatabaseScript.sql",
               "ToolTip": "C:\\Users\\DELL\\Desktop\\assesment\\Backend\\Backend\\Database\\DatabaseScript.sql",
               "RelativeToolTip": "Backend\\Database\\DatabaseScript.sql",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2026-03-10T20:15:10.6Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-10T20:15:10.6Z"
             },
             {
               "$type": "Document",
@@ -287,8 +270,7 @@
               "RelativeToolTip": "Backend\\Properties\\launchSettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-10T20:07:15.865Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-10T20:07:15.865Z"
             },
             {
               "$type": "Document",
@@ -300,8 +282,7 @@
               "RelativeToolTip": "Backend\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-10T20:17:07.709Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-10T20:17:07.709Z"
             },
             {
               "$type": "Document",
@@ -313,8 +294,7 @@
               "RelativeToolTip": "Backend\\appsettings.Development.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-10T20:07:06.587Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-10T20:07:06.587Z"
             },
             {
               "$type": "Document",

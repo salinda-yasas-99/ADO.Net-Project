@@ -22,7 +22,7 @@ const formatDate = (dateString) => {
 const formatSalary = (salary) => {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: 'USD',
+    currency: 'LKR',
   }).format(salary);
 };
 
